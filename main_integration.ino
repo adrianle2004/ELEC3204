@@ -29,7 +29,7 @@ const unsigned long debounceDelay = 50; // Debounce delay in milliseconds.
 volatile unsigned int pulseCount = 0;
 const unsigned int countsPerRev = 12;
 unsigned long previousMillis = 0;
-const unsigned long interval = 1000; // 1 second
+const unsigned long interval = 500; // 1 second
 
 void countPulse() {
   pulseCount++;
@@ -236,10 +236,8 @@ void close_loop() {
 
 
 void duty_cycle(float D){
-  digitalWrite(9, HIGH);
-  delay(cycle*D);
-  digitalWrite(9, LOW);
-  delay(cycle*(1.0-D));
+  int duty = int(D * 255.0);
+  analogWrite(9, duty);
 }
 
 
