@@ -91,9 +91,9 @@ void open_loop(){
   }
   if (currentMillis - lastButtonTime_off > debounceDelay) {
     buttonstate_off = digitalRead(7);
-  if (buttonstate_off == HIGH && lastbuttonstate_off == LOW) { // posedge button - pressed and released
-      motor_state = 0.0;
-    }
+    if (buttonstate_off == HIGH && lastbuttonstate_off == LOW) { // posedge button - pressed and released
+        motor_state = 0.0;
+      }
     lastButtonTime_off = currentMillis;
     lastbuttonstate_off = buttonstate_off;
   }
